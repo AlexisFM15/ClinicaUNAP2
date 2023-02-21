@@ -1,0 +1,205 @@
+create database UNAP_DB
+go
+use UNAP_DB
+go
+
+create table Recinto
+(
+IdRecinto int primary key identity,
+Nombre varchar (100),
+Ubicacion varchar (100),
+Direccion varchar (100)
+);
+
+go
+
+create table Usuario
+(
+IdUsuario int primary key identity,
+UserName varchar (40) unique,
+Clave varchar(10),
+Estado varchar (30),
+IdRol int, /*FK*/
+
+foreign key (IdRol) references Rol (IdRol)
+);
+
+go
+
+create table Rol
+(
+IdRol int primary key identity,
+Nombre varchar (50)
+);
+
+go
+
+create table Empleado
+(
+IdEmpleado int primary key identity,
+Nombre varchar (30),
+Apellido varchar (40),
+Cedula  int unique,
+Direccion varchar (80),
+Telefono varchar(40),
+Cargo varchar,
+Edad int,
+IdRecinto int, /*FK*/
+IdUsuario int, /*FK*/
+/*IdConsulta int,*/ /*FK*/
+/*foreign key*/ 
+foreign key (IdRecinto) references Recinto (IdRecinto),
+foreign key (IdUsuario) references Usuario (IdUsuario),
+/*foreign key (IdConsulta) references Consulta (IdConsulta)*/
+);
+
+go
+
+create table Medico
+(
+IdMedico int primary key identity,
+Nombre varchar (30),
+Apellido varchar (40),
+Cedula int unique,
+Direccion varchar (80),
+Telefono varchar(40),
+Edad int,
+IdEspecialidad int, /*FK*/
+IdRecinto int, /*fk*/
+
+foreign key (IdEspecialidad) references Especialidad (IdEspecialidad),
+foreign key (IdRecinto) references Recinto (IdRecinto)
+);
+
+go
+
+create table Especialidad
+(
+IdEspecialidad int primary key identity,
+Tipo varchar (80) unique
+);
+
+go
+
+create table Paciente
+(
+IdPaciente int primary key identity,
+Nombre varchar (30),
+Apellido varchar (40),
+Cedula int unique,
+Direccion varchar (80),
+Telefono varchar(40),
+Sexo varchar (15),
+Edad int,
+TipoSangre varchar (3),
+IdSeguro int, /*FK*/
+
+foreign key (IdSeguro) references Seguro (IdSeguro)
+);
+
+go
+
+create table Seguro
+(
+IdSeguro int primary key identity,
+Nombre varchar (50),
+);
+
+go
+
+create table Medicamentos
+(
+IdMedicamentos int primary key identity,
+Nombre varchar (100),
+CantidadExistente int,
+FechaVencimiento Date
+);
+
+go
+
+create table Consulta
+(
+IdConsulta int primary key identity,
+TipoAtencion varchar (30),
+Analisis varchar (1000),
+IdPaciente int, /*FK*/
+IdMedico int, /*FK*/
+IdEmpleado int, /*FK*/
+IdRecinto int, /*FK*/
+
+foreign key (IdPaciente) references Paciente (IdPaciente),
+foreign key(IdMedico) references Medico (IdMedico),
+foreign key (IdEmpleado) references Empleado (IdEmpleado),
+foreign key (IdRecinto) references Recinto (IdRecinto)
+);
+
+go
+
+create table DiagnosticoConsulta
+(
+IdDiagnosticoConsulta int primary key identity,
+Analisis varchar(1000),
+Evaluacion varchar (1000),
+IdConsulta int
+
+foreign key (IdConsulta) references Consulta (IDConsulta)
+);
+
+go 
+
+create table Cita
+(
+IdCita int primary key identity,
+Descripcion varchar (100),
+Tipo varchar (80),
+Estado varchar (30),
+Fecha date,
+IdPaciente int, /*FK*/
+IdMedico int, /*FK*/
+IdEmpleado int, /*FK*/
+IdRecinto int, /*FK*/
+IdConsulta int,
+/*IdDiagnosticoCita int,*/
+
+foreign key (IdPaciente) references Paciente (IdPaciente),
+foreign key(IdMedico) references Medico (IdMedico),
+foreign key (IdEmpleado) references Empleado (IdEmpleado),
+foreign key (IdRecinto) references Recinto (IdRecinto),
+foreign key (IdConsulta) references Consulta (IDConsulta),
+/*foreign key (IdDiagnosticoCita) references DiagnosticoCita (IdDiagnosticoCita)*/
+);
+
+go
+
+create table DiagnosticoCita
+(
+IdDiagnosticoCita int primary key identity,
+Resultado varchar(1000),
+Referencia varchar (500),
+IdCita int,
+
+foreign key (IdCita) references Cita (IdCita)
+);
+
+go
+
+
+create table Receta
+(
+IdReceta int primary key identity,
+Cantidad int,
+IdMedicamentos int,
+IdDiagnosticoConsulta int,
+
+foreign key (IdMedicamentos ) references Medicamentos (IdMedicamentos ),
+foreign key (IdDiagnosticoConsulta) references DiagnosticoConsulta (IdDiagnosticoConsulta)
+);
+
+go
+
+create table Sesion
+(
+IdSesion int primary key identity
+);
+
+SELECT * FROM Consulta
