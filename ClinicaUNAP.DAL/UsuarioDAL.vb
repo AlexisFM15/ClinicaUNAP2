@@ -18,7 +18,7 @@ Public Class UsuarioDAL
 
             'Creamos la sentencia SQL para agregar registros
 
-            Dim sql As String = "INSERT INTO Usuario ( IdRol, UserName, Clave, Estado) Values (@idRol, @userName, @clave, @estado ) SELECT SCOPE_IDENTITY()"
+            Dim sql As String = "INSERT INTO Usuarios ( IdRol, Nombre, Clave, Estado) Values (@idRol, @nombre, @clave, @estado ) SELECT SCOPE_IDENTITY()"
 
             'Creamos el comando cmd con los datos y la conexion
 
@@ -32,7 +32,7 @@ Public Class UsuarioDAL
             'EJEMPLO cmd.Parameters.AddWithValue("@nombre", articulo.Nombre)
             ' cmd.Parameters.AddWithValue("@idRecinto", recinto.IdRecinto)
 
-            cmd.Parameters.AddWithValue("@userName", usuario.UserName)
+            cmd.Parameters.AddWithValue("@nombre", usuario.Nombre)
             cmd.Parameters.AddWithValue("@clave", usuario.Clave)
             cmd.Parameters.AddWithValue("@estado", usuario.Estado)
             cmd.Parameters.AddWithValue("@idRol", usuario.IdRol)
@@ -58,7 +58,7 @@ Public Class UsuarioDAL
 
             'Creamos la sentencia SQL para agregar registros
 
-            Dim sql As String = "UPDATE Usuario Set IdRol = @idRol, UserName = @userName, Clave =  @clave, Estado = @estado WHERE IdUsuario = @idUsuario"
+            Dim sql As String = "UPDATE Usuarios Set IdRol = @idRol, Nombre = @nombre, Clave =  @clave, Estado = @estado WHERE IdUsuario = @idUsuario"
 
             'Creamos el comando cmd con los datos y la conexion
 
@@ -68,7 +68,7 @@ Public Class UsuarioDAL
 
             'EJEMPLO cmd.Parameters.AddWithValue("@nombre", articulo.Nombre)
 
-            cmd.Parameters.AddWithValue("@userName", usuario.UserName)
+            cmd.Parameters.AddWithValue("@nombre", usuario.Nombre)
             cmd.Parameters.AddWithValue("@clave", usuario.Clave)
             cmd.Parameters.AddWithValue("@estado", usuario.Estado)
             cmd.Parameters.AddWithValue("@idRol", usuario.IdRol)
@@ -101,7 +101,7 @@ Public Class UsuarioDAL
 
             'Creamos sentencias SQL para eliminar registros
 
-            Dim sql As String = "DELETE FROM Usuario WHERE IdUsuario"
+            Dim sql As String = "DELETE FROM Usuarios WHERE IdUsuario"
 
             'Creamos el comando cmd con los datos y la conexion
 
@@ -138,7 +138,7 @@ Public Class UsuarioDAL
         'EJEMPLO articulo.Nombre = reader("Nombre")
         usuario.IdUsuario = Convert.ToInt32(reader("IdUsuario"))
         usuario.IdRol = Convert.ToInt32(reader("IdRol"))
-        usuario.UserName = reader("UserName")
+        usuario.Nombre = reader("Nombre")
         usuario.Clave = reader("Clave")
         usuario.Estado = reader("Estado")
 
@@ -166,7 +166,7 @@ Public Class UsuarioDAL
 
             'Se realiza la seleccion en SQL y se la pasamos a la variable sql
 
-            Dim sql As String = "SELECT * FROM Usuario WHERE UserName Like '%'+ @Valor +'%'  ORDER BY UserName"
+            Dim sql As String = "SELECT * FROM Usuarios WHERE Nombre Like '%'+ @Valor +'%'  ORDER BY Nombre"
 
             'Creamos el comando cmd con los datos y la conexion
 
@@ -209,7 +209,7 @@ Public Class UsuarioDAL
 
             'Se realiza la seleccion en SQL y se la pasamos a la variable sql
 
-            Dim sql As String = "SELECT * FROM Usuario  ORDER BY UserName"
+            Dim sql As String = "SELECT * FROM Usuarios  ORDER BY Nombre"
 
             'Creamos el comando cmd con los datos y la conexion
 
@@ -251,7 +251,7 @@ Public Class UsuarioDAL
 
             'EJEMPLO Dim sql As String = "SELECT * FROM Articulo Where ID=@idArticulo"
 
-            Dim sql As String = "SELECT * FROM Usuario Where IdUsuario = @idUsuario"
+            Dim sql As String = "SELECT * FROM Usuarios Where IdUsuario = @idUsuario"
 
             'Creamos el comando cmd con los datos y la conexion
 

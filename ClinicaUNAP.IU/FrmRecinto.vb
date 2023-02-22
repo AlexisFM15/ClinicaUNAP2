@@ -94,7 +94,7 @@ Public Class FrmRecinto
         'pasamos los objetos de recinto entity a la variable oRecinto
         Dim oRecinto As New RecintoEntity
 
-        oRecinto.ID = Me.TxtId.Text
+        oRecinto.ID = Convert.ToInt32(Me.TxtId.Text)
         oRecinto.Nombre = Me.TxtNombre.Text
         oRecinto.Ubicacion = Me.TxtUbicacion.Text
         oRecinto.Direccion = Me.TxtDireccion.Text
@@ -153,11 +153,9 @@ Public Class FrmRecinto
 
     End Sub
 
-    Private Sub BtnRegresar_Click(sender As Object, e As EventArgs) Handles BtnRegresar.Click
-        Me.Hide()
-        FrmMenuAvanzado.Show()
 
-    End Sub
+
+
 
     'Private Sub BtnEliminar_Click(sender As Object, e As EventArgs) Handles BtnEliminar.Click
     '    Dim oRecinto As New RecintoEntity

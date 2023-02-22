@@ -1,9 +1,9 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Class FrmRecinto
     Inherits System.Windows.Forms.Form
 
     'Form reemplaza a Dispose para limpiar la lista de componentes.
-    <System.Diagnostics.DebuggerNonUserCode()> _
+    <System.Diagnostics.DebuggerNonUserCode()>
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         Try
             If disposing AndAlso components IsNot Nothing Then
@@ -20,7 +20,7 @@ Partial Class FrmRecinto
     'NOTA: el Diseñador de Windows Forms necesita el siguiente procedimiento
     'Se puede modificar usando el Diseñador de Windows Forms.  
     'No lo modifique con el editor de código.
-    <System.Diagnostics.DebuggerStepThrough()> _
+    <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Me.TxtId = New System.Windows.Forms.TextBox()
@@ -40,8 +40,6 @@ Partial Class FrmRecinto
         Me.BtnNuevo = New System.Windows.Forms.Button()
         Me.BtnCancelar = New System.Windows.Forms.Button()
         Me.ErrorProvider1 = New System.Windows.Forms.ErrorProvider(Me.components)
-        Me.BtnEliminar = New System.Windows.Forms.Button()
-        Me.BtnRegresar = New System.Windows.Forms.Button()
         CType(Me.DgvRecinto, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.ErrorProvider1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -184,31 +182,11 @@ Partial Class FrmRecinto
         '
         Me.ErrorProvider1.ContainerControl = Me
         '
-        'BtnEliminar
-        '
-        Me.BtnEliminar.Location = New System.Drawing.Point(245, 23)
-        Me.BtnEliminar.Name = "BtnEliminar"
-        Me.BtnEliminar.Size = New System.Drawing.Size(95, 46)
-        Me.BtnEliminar.TabIndex = 12
-        Me.BtnEliminar.Text = "Eliminar"
-        Me.BtnEliminar.UseVisualStyleBackColor = True
-        '
-        'BtnRegresar
-        '
-        Me.BtnRegresar.Location = New System.Drawing.Point(245, 90)
-        Me.BtnRegresar.Name = "BtnRegresar"
-        Me.BtnRegresar.Size = New System.Drawing.Size(95, 46)
-        Me.BtnRegresar.TabIndex = 13
-        Me.BtnRegresar.Text = "Regresar"
-        Me.BtnRegresar.UseVisualStyleBackColor = True
-        '
         'FrmRecinto
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(816, 360)
-        Me.Controls.Add(Me.BtnRegresar)
-        Me.Controls.Add(Me.BtnEliminar)
         Me.Controls.Add(Me.BtnCancelar)
         Me.Controls.Add(Me.BtnNuevo)
         Me.Controls.Add(Me.DgvRecinto)
@@ -247,6 +225,4 @@ Partial Class FrmRecinto
     Friend WithEvents Nombre As Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents Ubicacion As Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents Direccion As Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents BtnEliminar As Windows.Forms.Button
-    Friend WithEvents BtnRegresar As Windows.Forms.Button
 End Class
