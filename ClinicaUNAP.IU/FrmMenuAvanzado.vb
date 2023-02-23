@@ -26,4 +26,9 @@ Public Class FrmMenuAvanzado
 
         FrmUsuario.Show()
     End Sub
+
+    Private Sub EmpleadoToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles EmpleadoToolStripMenuItem.Click
+        FrmEmpleado.Show()
+
+    End Sub
 End Class

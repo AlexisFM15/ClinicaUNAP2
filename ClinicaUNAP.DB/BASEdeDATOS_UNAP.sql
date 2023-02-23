@@ -51,11 +51,14 @@ IdUsuario int, /*FK*/
 /*IdConsulta int,*/ /*FK*/
 /*foreign key*/ 
 foreign key (IdRecinto) references Recinto (IdRecinto),
-foreign key (IdUsuario) references Usuario (IdUsuario),
+foreign key (IdUsuario) references Usuarios (IdUsuario),
 /*foreign key (IdConsulta) references Consulta (IdConsulta)*/
 );
 
 go
+
+
+/*alter Table Empleado add foreign key (IdUsuario) references Usuarios (IdUsuario)*/
 
 create table Medico
 (
