@@ -4,6 +4,7 @@ Imports System.Windows.Forms
 
 Public Class FrmRol
 
+
     ' PRIMER PASO - INICIALIZAR CONTROLES
     Private Sub InicializarControles()
 

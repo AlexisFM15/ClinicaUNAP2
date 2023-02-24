@@ -66,7 +66,7 @@
   <ItemGroup>
     <Compile Include="CitaEntity.vb" />
     <Compile Include="ConsultaEntity.vb" />
-    <Compile Include="DiagnosticoCita.vb" />
+    <Compile Include="DiagnosticoCitaEntity.vb" />
     <Compile Include="DiagnosticoConsultaEntity.vb" />
     <Compile Include="EmpleadoEntity.vb" />
     <Compile Include="EspecialidadEntity.vb" />

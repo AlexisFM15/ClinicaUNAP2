@@ -1,9 +1,9 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Class FrmRecinto
     Inherits System.Windows.Forms.Form
 
     'Form reemplaza a Dispose para limpiar la lista de componentes.
-    <System.Diagnostics.DebuggerNonUserCode()> _
+    <System.Diagnostics.DebuggerNonUserCode()>
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         Try
             If disposing AndAlso components IsNot Nothing Then
@@ -20,7 +20,7 @@ Partial Class FrmRecinto
     'NOTA: el Diseñador de Windows Forms necesita el siguiente procedimiento
     'Se puede modificar usando el Diseñador de Windows Forms.  
     'No lo modifique con el editor de código.
-    <System.Diagnostics.DebuggerStepThrough()> _
+    <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Me.TxtId = New System.Windows.Forms.TextBox()
@@ -40,8 +40,8 @@ Partial Class FrmRecinto
         Me.BtnNuevo = New System.Windows.Forms.Button()
         Me.BtnCancelar = New System.Windows.Forms.Button()
         Me.ErrorProvider1 = New System.Windows.Forms.ErrorProvider(Me.components)
-        Me.BtnEliminar = New System.Windows.Forms.Button()
-        Me.BtnRegresar = New System.Windows.Forms.Button()
+        Me.BtnBuscar = New System.Windows.Forms.Button()
+        Me.Label6 = New System.Windows.Forms.Label()
         CType(Me.DgvRecinto, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.ErrorProvider1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -83,9 +83,9 @@ Partial Class FrmRecinto
         '
         'BtnGuardar
         '
-        Me.BtnGuardar.Location = New System.Drawing.Point(130, 302)
+        Me.BtnGuardar.Location = New System.Drawing.Point(581, 23)
         Me.BtnGuardar.Name = "BtnGuardar"
-        Me.BtnGuardar.Size = New System.Drawing.Size(95, 46)
+        Me.BtnGuardar.Size = New System.Drawing.Size(107, 46)
         Me.BtnGuardar.TabIndex = 4
         Me.BtnGuardar.Text = "Guardar"
         Me.BtnGuardar.UseVisualStyleBackColor = True
@@ -126,10 +126,10 @@ Partial Class FrmRecinto
         Me.DgvRecinto.AllowUserToDeleteRows = False
         Me.DgvRecinto.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.DgvRecinto.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.ID, Me.Nombre, Me.Ubicacion, Me.Direccion})
-        Me.DgvRecinto.Location = New System.Drawing.Point(346, 33)
+        Me.DgvRecinto.Location = New System.Drawing.Point(346, 97)
         Me.DgvRecinto.Name = "DgvRecinto"
         Me.DgvRecinto.ReadOnly = True
-        Me.DgvRecinto.Size = New System.Drawing.Size(458, 315)
+        Me.DgvRecinto.Size = New System.Drawing.Size(458, 168)
         Me.DgvRecinto.TabIndex = 9
         '
         'ID
@@ -164,18 +164,18 @@ Partial Class FrmRecinto
         '
         'BtnNuevo
         '
-        Me.BtnNuevo.Location = New System.Drawing.Point(15, 302)
+        Me.BtnNuevo.Location = New System.Drawing.Point(469, 23)
         Me.BtnNuevo.Name = "BtnNuevo"
-        Me.BtnNuevo.Size = New System.Drawing.Size(95, 46)
+        Me.BtnNuevo.Size = New System.Drawing.Size(106, 46)
         Me.BtnNuevo.TabIndex = 10
         Me.BtnNuevo.Text = "Nuevo"
         Me.BtnNuevo.UseVisualStyleBackColor = True
         '
         'BtnCancelar
         '
-        Me.BtnCancelar.Location = New System.Drawing.Point(245, 302)
+        Me.BtnCancelar.Location = New System.Drawing.Point(694, 23)
         Me.BtnCancelar.Name = "BtnCancelar"
-        Me.BtnCancelar.Size = New System.Drawing.Size(95, 46)
+        Me.BtnCancelar.Size = New System.Drawing.Size(110, 46)
         Me.BtnCancelar.TabIndex = 11
         Me.BtnCancelar.Text = "Cancelar"
         Me.BtnCancelar.UseVisualStyleBackColor = True
@@ -184,31 +184,31 @@ Partial Class FrmRecinto
         '
         Me.ErrorProvider1.ContainerControl = Me
         '
-        'BtnEliminar
+        'BtnBuscar
         '
-        Me.BtnEliminar.Location = New System.Drawing.Point(245, 23)
-        Me.BtnEliminar.Name = "BtnEliminar"
-        Me.BtnEliminar.Size = New System.Drawing.Size(95, 46)
-        Me.BtnEliminar.TabIndex = 12
-        Me.BtnEliminar.Text = "Eliminar"
-        Me.BtnEliminar.UseVisualStyleBackColor = True
+        Me.BtnBuscar.Location = New System.Drawing.Point(346, 23)
+        Me.BtnBuscar.Name = "BtnBuscar"
+        Me.BtnBuscar.Size = New System.Drawing.Size(117, 46)
+        Me.BtnBuscar.TabIndex = 12
+        Me.BtnBuscar.Text = "Buscar"
+        Me.BtnBuscar.UseVisualStyleBackColor = True
         '
-        'BtnRegresar
+        'Label6
         '
-        Me.BtnRegresar.Location = New System.Drawing.Point(245, 90)
-        Me.BtnRegresar.Name = "BtnRegresar"
-        Me.BtnRegresar.Size = New System.Drawing.Size(95, 46)
-        Me.BtnRegresar.TabIndex = 13
-        Me.BtnRegresar.Text = "Regresar"
-        Me.BtnRegresar.UseVisualStyleBackColor = True
+        Me.Label6.AutoSize = True
+        Me.Label6.Location = New System.Drawing.Point(343, 81)
+        Me.Label6.Name = "Label6"
+        Me.Label6.Size = New System.Drawing.Size(76, 13)
+        Me.Label6.TabIndex = 40
+        Me.Label6.Text = "Vista Reciente"
         '
         'FrmRecinto
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(816, 360)
-        Me.Controls.Add(Me.BtnRegresar)
-        Me.Controls.Add(Me.BtnEliminar)
+        Me.ClientSize = New System.Drawing.Size(808, 271)
+        Me.Controls.Add(Me.Label6)
+        Me.Controls.Add(Me.BtnBuscar)
         Me.Controls.Add(Me.BtnCancelar)
         Me.Controls.Add(Me.BtnNuevo)
         Me.Controls.Add(Me.DgvRecinto)
@@ -247,6 +247,6 @@ Partial Class FrmRecinto
     Friend WithEvents Nombre As Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents Ubicacion As Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents Direccion As Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents BtnEliminar As Windows.Forms.Button
-    Friend WithEvents BtnRegresar As Windows.Forms.Button
+    Friend WithEvents BtnBuscar As Windows.Forms.Button
+    Friend WithEvents Label6 As Windows.Forms.Label
 End Class

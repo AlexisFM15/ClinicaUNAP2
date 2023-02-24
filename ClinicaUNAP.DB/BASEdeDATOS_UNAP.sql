@@ -15,10 +15,10 @@ Direccion varchar (100)
 go
 
 
-create table Usuario
+create table Usuarios
 (
 IdUsuario int primary key identity,
-UserName varchar (40) unique,
+Nombre varchar (40) unique,
 Clave varchar(10),
 Estado varchar (30),
 IdRol int, /*FK*/
@@ -51,11 +51,14 @@ IdUsuario int, /*FK*/
 /*IdConsulta int,*/ /*FK*/
 /*foreign key*/ 
 foreign key (IdRecinto) references Recinto (IdRecinto),
-foreign key (IdUsuario) references Usuario (IdUsuario),
+foreign key (IdUsuario) references Usuarios (IdUsuario),
 /*foreign key (IdConsulta) references Consulta (IdConsulta)*/
 );
 
 go
+
+
+/*alter Table Empleado add foreign key (IdUsuario) references Usuarios (IdUsuario)*/
 
 create table Medico
 (
@@ -204,7 +207,8 @@ create table Sesion
 IdSesion int primary key identity
 );
 
-SELECT * FROM Recinto
+SELECT * FROM Usuarios
 
-/*delete  from Recinto */
+delete  from Usuario 
 
+ALTER Table Usuario  drop column UserName

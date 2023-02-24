@@ -20,7 +20,9 @@
     <DefineTrace>true</DefineTrace>
     <OutputPath>bin\Debug\</OutputPath>
     <DocumentationFile>ClinicaUNAP.IU.xml</DocumentationFile>
-    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+    <NoWarn>41999,42016,42017,42018,42019,42020,42021,42022,42032,42036</NoWarn>
+    <WarningsAsErrors>
+    </WarningsAsErrors>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -29,7 +31,9 @@
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
     <DocumentationFile>ClinicaUNAP.IU.xml</DocumentationFile>
-    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+    <NoWarn>41999,42016,42017,42018,42019,42020,42021,42022,42032,42036</NoWarn>
+    <WarningsAsErrors>
+    </WarningsAsErrors>
   </PropertyGroup>
   <PropertyGroup>
     <OptionExplicit>On</OptionExplicit>
@@ -70,6 +74,12 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FrmEmpleado.Designer.vb">
+      <DependentUpon>FrmEmpleado.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FrmEmpleado.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="FrmMenuAvanzado.Designer.vb">
       <DependentUpon>FrmMenuAvanzado.vb</DependentUpon>
     </Compile>
@@ -116,6 +126,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="FrmEmpleado.resx">
+      <DependentUpon>FrmEmpleado.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmMenuAvanzado.resx">
       <DependentUpon>FrmMenuAvanzado.vb</DependentUpon>
     </EmbeddedResource>

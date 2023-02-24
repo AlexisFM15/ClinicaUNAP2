@@ -1,19 +1,15 @@
-﻿Imports System.Windows.Forms
-Imports ClinicaUNAP.BLL
+﻿Imports ClinicaUNAP.BLL
 Imports ClinicaUNAP.Entity
+Imports System.Windows.Forms
 
-Public Class FrmRecinto
-
-
+Public Class FrmEspecialidad
     ' PRIMER PASO - INICIALIZAR CONTROLES
     Private Sub InicializarControles()
 
-        Me.TxtId.Text = "0"
-        Me.TxtNombre.Clear()
-        Me.TxtUbicacion.Clear()
-        Me.TxtDireccion.Clear()
-        Me.DgvRecinto.AutoGenerateColumns = False
-        Me.DgvRecinto.DataSource = RecintoBLL.GetAll()
+        Me.TxtIdEspecialidad.Text = "0"
+        Me.TxtTipo.Clear()
+        Me.DgvEspecialidad.AutoGenerateColumns = False
+        Me.DgvEspecialidad.DataSource = EspecialidadBLL.GetAll()
 
     End Sub
 
@@ -31,21 +27,9 @@ Public Class FrmRecinto
 
         'Verificamos que en los campos obligatorios haya datos
 
-        If String.IsNullOrEmpty(TxtNombre.Text) Then
+        If String.IsNullOrEmpty(TxtTipo.Text) Then
 
-            ErrorProvider1.SetError(TxtNombre, "El Nombre es obligatorio")
-
-            resultado = False
-
-        ElseIf String.IsNullOrEmpty(TxtUbicacion.Text) Then
-
-            ErrorProvider1.SetError(TxtUbicacion, "La Ubicacion es obligatoria")
-
-            resultado = False
-
-        ElseIf String.IsNullOrEmpty(TxtDireccion.Text) Then
-
-            ErrorProvider1.SetError(TxtDireccion, "La Direccion es obligatoria")
+            ErrorProvider1.SetError(TxtTipo, "El Tipo es obligatorio")
 
             resultado = False
 
@@ -58,7 +42,8 @@ Public Class FrmRecinto
     'TERCER PASO - CONFIGURAR DATAGRIDVIEW AL HACER DOBLE CLICK EN UN REGISTRO
     'CARGARLOS DATOS A LOS CONTROLES DE TEXTO 
     'VAMOS A LOS EVENTOS DEL MISMO Y BUSCAMOS CELLDOUBLECLICK Y LE DAMOS DOS CLICK  
-    Private Sub DgvRecinto_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles DgvRecinto.CellClick
+
+    Private Sub DgvEspecialidad_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles DgvEspecialidad.CellClick
         'Decimos que si le dan al encabesado del datagridview se salga
 
         If e.RowIndex = -1 Then
@@ -69,15 +54,15 @@ Public Class FrmRecinto
 
         'Declaramos una variable row tipo datagridviewrow igualada al datagridview con la propiedad currentrow
 
-        Dim row As DataGridViewRow = Me.DgvRecinto.CurrentRow
+        Dim row As DataGridViewRow = Me.DgvEspecialidad.CurrentRow
 
         'Cargamos los datos de la celdas a los controles TexBox
 
-        Me.TxtId.Text = row.Cells("ID").Value
-        Me.TxtNombre.Text = row.Cells("Nombre").Value
-        Me.TxtUbicacion.Text = row.Cells("Ubicacion").Value
-        Me.TxtDireccion.Text = row.Cells("Direccion").Value
+        Me.TxtIdEspecialidad.Text = row.Cells("IdEspecialidad").Value
+        Me.TxtTipo.Text = row.Cells("Tipo").Value
+
     End Sub
+
 
     'CUARTO PASO - BOTON GUARDAR
     Private Sub BtnGuardar_Click(sender As Object, e As EventArgs) Handles BtnGuardar.Click
@@ -93,23 +78,22 @@ Public Class FrmRecinto
         '2 Pasamos los datos de los controles a un objeto
 
         'pasamos los objetos de recinto entity a la variable oRecinto
-        Dim oRecinto As New RecintoEntity
+        Dim oEspecialidad As New EspecialidadEntity
 
-        oRecinto.ID = Convert.ToInt32(Me.TxtId.Text)
-        oRecinto.Nombre = Me.TxtNombre.Text
-        oRecinto.Ubicacion = Me.TxtUbicacion.Text
-        oRecinto.Direccion = Me.TxtDireccion.Text
+        oEspecialidad.IdEspecialidad = Me.TxtIdEspecialidad.Text
+        oEspecialidad.Tipo = Me.TxtTipo.Text
+
 
         '3 Mandamos a guardar el objeto creado a la BD
 
         Try
             'Guardarlo
 
-            RecintoBLL.Save(oRecinto)
+            EspecialidadBLL.Save(oEspecialidad)
 
             'Mensaje de que si se guardo
 
-            MessageBox.Show("Recinto Guardado", "Clinica UNAP", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            MessageBox.Show("Especialidad Guardada", "Clinica UNAP", MessageBoxButtons.OK, MessageBoxIcon.Information)
 
             'Si se guardo entonces inicializamos los controles
 
@@ -136,7 +120,7 @@ Public Class FrmRecinto
     End Sub
 
     'SEXTO PASO - BOTON CANCELAR
-    Private Sub BtnCancelar_Click(sender As Object, e As EventArgs) Handles BtnCancelar.Click
+    Private Sub BtnCancelar_Click(sender As Object, e As EventArgs)
 
         'Es simplemente cerrar el formulario
 
@@ -145,7 +129,7 @@ Public Class FrmRecinto
     End Sub
 
     'SEPTIMO PASO Y ULTIMO - AL ABRIR EL FORMULARIO (LOAD)
-    Private Sub FrmRecinto_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+    Private Sub FrmEspecialidad_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
         'Al entrar al formulario debe estar inicializado los controles
 
@@ -154,15 +138,10 @@ Public Class FrmRecinto
 
     End Sub
 
+    Private Sub BtnRegresar_Click(sender As Object, e As EventArgs) Handles BtnRegresar.Click
 
+        FrmMenuAvanzado.Show()
 
+    End Sub
 
-
-    'Private Sub BtnEliminar_Click(sender As Object, e As EventArgs) Handles BtnEliminar.Click
-    '    Dim oRecinto As New RecintoEntity
-
-
-    '    RecintoBLL.Eliminar(oRecinto)
-
-    'End Sub
 End Class

@@ -64,6 +64,13 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CitaBLL.vb" />
+    <Compile Include="ConsultaBLL.vb" />
+    <Compile Include="DiagnosticoCitaBLL.vb" />
+    <Compile Include="DiagnosticoConsultaBLL.vb" />
+    <Compile Include="EmpleadoBLL.vb" />
+    <Compile Include="EspecialidadBLL.vb" />
+    <Compile Include="MedicamentosBLL.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
       <AutoGen>True</AutoGen>
@@ -79,8 +86,10 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Compile Include="PacienteBLL.vb" />
     <Compile Include="RecintoBLL.vb" />
     <Compile Include="RolBLL.vb" />
+    <Compile Include="SeguroBLL.vb" />
     <Compile Include="UsuarioBLL.vb" />
   </ItemGroup>
   <ItemGroup>

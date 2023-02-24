@@ -1,8 +1,7 @@
 ﻿Imports ClinicaUNAP.Entity
 Imports System.Data.SqlClient
 
-Public Class UsuarioDAL
-
+Public Class PacienteDAL
     'Heredamos de la conexion de la base de datos
     Inherits BaseDAL
 
@@ -10,7 +9,7 @@ Public Class UsuarioDAL
 
     'METODO CREATE
 
-    Public Shared Sub Create(usuario As UsuarioEntity)
+    Public Shared Sub Create(Paciente As PacienteEntity)
         'crear la conexion a la fuente de la base de datos y abrirla
 
         Using conex As New SqlConnection(m_CadenaConexion)
@@ -18,30 +17,32 @@ Public Class UsuarioDAL
 
             'Creamos la sentencia SQL para agregar registros
 
-            Dim sql As String = "INSERT INTO Usuarios ( IdRol, Nombre, Clave, Estado) Values (@idRol, @nombre, @clave, @estado ) SELECT SCOPE_IDENTITY()"
+            Dim sql As String = "INSERT INTO Paciente ( IdSeguro, Nombre, Apellido, Cedula, Direccion, Telefono, Sexo, Edad, TipoSangre) Values (@IdSeguro, @nombre, @apellido, @cedula, @direccion, @telefono, @sexo, @edad, @TipoSangre ) SELECT SCOPE_IDENTITY()"
 
             'Creamos el comando cmd con los datos y la conexion
 
             Dim cmd As New SqlCommand(sql, conex)
-
-
-
 
             'Agregamos los parametros
 
             'EJEMPLO cmd.Parameters.AddWithValue("@nombre", articulo.Nombre)
             ' cmd.Parameters.AddWithValue("@idRecinto", recinto.IdRecinto)
 
-            cmd.Parameters.AddWithValue("@nombre", usuario.Nombre)
-            cmd.Parameters.AddWithValue("@clave", usuario.Clave)
-            cmd.Parameters.AddWithValue("@estado", usuario.Estado)
-            cmd.Parameters.AddWithValue("@idRol", usuario.IdRol)
+            cmd.Parameters.AddWithValue("@nombre", Paciente.Nombre)
+            cmd.Parameters.AddWithValue("@apellido", Paciente.Apellido)
+            cmd.Parameters.AddWithValue("@cedula", Paciente.Cedula)
+            cmd.Parameters.AddWithValue("@direccion", Paciente.Direccion)
+            cmd.Parameters.AddWithValue("@telefono", Paciente.Telefono)
+            cmd.Parameters.AddWithValue("@sexo", Paciente.Sexo)
+            cmd.Parameters.AddWithValue("@edad", Paciente.Edad)
+            cmd.Parameters.AddWithValue("@TipoSangre", Paciente.TipoSangre)
+            cmd.Parameters.AddWithValue("@idSeguro", Paciente.IdSeguro)
 
             'Lo ejecutamos de manera escalar por el id objeto primario  de la tabla
 
             'EJEMPLO articulo.ID = Convert.ToInt32(cmd.ExecuteScalar())
 
-            usuario.IdUsuario = cmd.ExecuteScalar()
+            Paciente.IdPaciente = cmd.ExecuteScalar()
 
         End Using
 
@@ -49,7 +50,7 @@ Public Class UsuarioDAL
 
     'METODO UPDATE
 
-    Public Shared Sub Update(usuario As UsuarioEntity)
+    Public Shared Sub Update(Paciente As PacienteEntity)
 
         'crear la conexion a la fuente de la base de datos y abrirla
 
@@ -58,7 +59,7 @@ Public Class UsuarioDAL
 
             'Creamos la sentencia SQL para agregar registros
 
-            Dim sql As String = "UPDATE Usuarios Set IdRol = @idRol, Nombre = @nombre, Clave =  @clave, Estado = @estado WHERE IdUsuario = @idUsuario"
+            Dim sql As String = "UPDATE Paciente Set IdSeguro = @idSeguro, Nombre = @nombre, Apellido = @apellido, Cedula = @cedula, Direccion = @direccion, Telefono = @telefono, Sexo = @sexo, Edad = @edad, TipoSangre = @TipoSangre WHERE IdPaciente = @idPaciente"
 
             'Creamos el comando cmd con los datos y la conexion
 
@@ -68,11 +69,15 @@ Public Class UsuarioDAL
 
             'EJEMPLO cmd.Parameters.AddWithValue("@nombre", articulo.Nombre)
 
-            cmd.Parameters.AddWithValue("@nombre", usuario.Nombre)
-            cmd.Parameters.AddWithValue("@clave", usuario.Clave)
-            cmd.Parameters.AddWithValue("@estado", usuario.Estado)
-            cmd.Parameters.AddWithValue("@idRol", usuario.IdRol)
-            cmd.Parameters.AddWithValue("@idUsuario", usuario.IdUsuario)
+            cmd.Parameters.AddWithValue("@nombre", Paciente.Nombre)
+            cmd.Parameters.AddWithValue("@apellido", Paciente.Apellido)
+            cmd.Parameters.AddWithValue("@cedula", Paciente.Cedula)
+            cmd.Parameters.AddWithValue("@direccion", Paciente.Direccion)
+            cmd.Parameters.AddWithValue("@telefono", Paciente.Telefono)
+            cmd.Parameters.AddWithValue("@sexo", Paciente.Sexo)
+            cmd.Parameters.AddWithValue("@edad", Paciente.Edad)
+            cmd.Parameters.AddWithValue("@TipoSangre", Paciente.TipoSangre)
+            cmd.Parameters.AddWithValue("@idSeguro", Paciente.IdSeguro)
 
 
             'Lo ejecutamos
@@ -101,7 +106,7 @@ Public Class UsuarioDAL
 
             'Creamos sentencias SQL para eliminar registros
 
-            Dim sql As String = "DELETE FROM Usuarios WHERE IdUsuario"
+            Dim sql As String = "DELETE FROM Paciente WHERE IdPaciente"
 
             'Creamos el comando cmd con los datos y la conexion
 
@@ -109,7 +114,7 @@ Public Class UsuarioDAL
 
             'Agregamos los parametros
 
-            cmd.Parameters.AddWithValue("IdUsuario", id)
+            cmd.Parameters.AddWithValue("IdPaciente", id)
 
             'La sentencia se ejecutara y se almacenara en la variable  cuando sea mayor que cero 
             SeElimino = cmd.ExecuteNonQuery() > 0
@@ -126,27 +131,30 @@ Public Class UsuarioDAL
 
     'Convertir los datos a objetos
 
-    Private Shared Function ConvertToObject(reader As IDataReader) As UsuarioEntity
+    Private Shared Function ConvertToObject(reader As IDataReader) As PacienteEntity
 
         'Se hace una intancia
         'EJEMPLO  Dim articulo As New ArticuloEntity()
 
-        Dim usuario As New UsuarioEntity
+        Dim Paciente As New PacienteEntity
 
         'Conversion a objetos
         'EJEMPLO articulo.IdCategoria = Convert.ToInt32(reader("IdCategoria"))
         'EJEMPLO articulo.Nombre = reader("Nombre")
-        usuario.IdUsuario = Convert.ToInt32(reader("IdUsuario"))
-        usuario.IdRol = Convert.ToInt32(reader("IdRol"))
-        usuario.Nombre = reader("Nombre")
-        usuario.Clave = reader("Clave")
-        usuario.Estado = reader("Estado")
-
-
+        Paciente.IdPaciente = Convert.ToInt32(reader("IdPaciente"))
+        Paciente.IdSeguro = Convert.ToInt32(reader("IdSeguro"))
+        Paciente.Nombre = reader("Nombre")
+        Paciente.Apellido = reader("Apellido")
+        Paciente.Cedula = Convert.ToInt32(reader("Cedula"))
+        Paciente.Telefono = reader("Telefono")
+        Paciente.Direccion = reader("Direccion")
+        Paciente.Sexo = reader("Sexo")
+        Paciente.Edad = Convert.ToInt32(reader("Edad"))
+        Paciente.TipoSangre = reader("TipoSangre")
 
         'Se retorna la conversion
 
-        Return usuario 'La variable instanciada
+        Return Paciente 'La variable instanciada
 
     End Function
 
@@ -154,11 +162,11 @@ Public Class UsuarioDAL
 
     '- POR VALOR
 
-    Public Shared Function GetByValor(valor As String) As List(Of UsuarioEntity)
+    Public Shared Function GetByValor(valor As String) As List(Of PacienteEntity)
 
         'Se enlista los objetos en una variable
         'EMJEMPLO Dim list As New List(Of ArticuloEntity)
-        Dim list As New List(Of UsuarioEntity)
+        Dim list As New List(Of PacienteEntity)
 
         'Creamos la conexion y la abrimos
         Using conex As New SqlConnection(m_CadenaConexion)
@@ -166,7 +174,7 @@ Public Class UsuarioDAL
 
             'Se realiza la seleccion en SQL y se la pasamos a la variable sql
 
-            Dim sql As String = "SELECT * FROM Usuarios WHERE Nombre Like '%'+ @Valor +'%'  ORDER BY Nombre"
+            Dim sql As String = "SELECT * FROM Paciente WHERE Nombre Like '%'+ @Valor +'%' or Apellido Like '%' + @valor + '%' or Cedula Like '%' + @valor + '%' ORDER BY Nombre"
 
             'Creamos el comando cmd con los datos y la conexion
 
@@ -193,14 +201,15 @@ Public Class UsuarioDAL
 
     End Function
 
+
     '- POR TODOS
 
-    Public Shared Function GetAll() As List(Of UsuarioEntity)
+    Public Shared Function GetAll() As List(Of PacienteEntity)
         'Se enlista los objetos en una variable
 
         'EMJEMPLO Dim list As New List(Of ArticuloEntity)
 
-        Dim list As New List(Of UsuarioEntity)
+        Dim list As New List(Of PacienteEntity)
 
         'Creamos la conexion y la abrimos
 
@@ -209,7 +218,7 @@ Public Class UsuarioDAL
 
             'Se realiza la seleccion en SQL y se la pasamos a la variable sql
 
-            Dim sql As String = "SELECT * FROM Usuarios  ORDER BY Nombre"
+            Dim sql As String = "SELECT * FROM Paciente  ORDER BY Nombre"
 
             'Creamos el comando cmd con los datos y la conexion
 
@@ -234,14 +243,15 @@ Public Class UsuarioDAL
 
     End Function
 
+
     '- POR ID
 
-    Public Shared Function GetByID(id As Integer) As UsuarioEntity
+    Public Shared Function GetByID(id As Integer) As PacienteEntity
         'Se hace una intancia igual a nothing
 
         'EJEMPLO Dim articulo As ArticuloEntity = Nothing
 
-        Dim usuario As UsuarioEntity = Nothing
+        Dim Paciente As PacienteEntity = Nothing
 
         'Creamos la conexion y la abrimos
         Using conex As New SqlConnection(m_CadenaConexion)
@@ -251,7 +261,7 @@ Public Class UsuarioDAL
 
             'EJEMPLO Dim sql As String = "SELECT * FROM Articulo Where ID=@idArticulo"
 
-            Dim sql As String = "SELECT * FROM Usuarios Where IdUsuario = @idUsuario"
+            Dim sql As String = "SELECT * FROM Paciente Where IdPaciente = @idPaciente"
 
             'Creamos el comando cmd con los datos y la conexion
 
@@ -261,7 +271,7 @@ Public Class UsuarioDAL
 
             'EJEMPLO cmd.Parameters.AddWithValue("@idArticulo", id)
 
-            cmd.Parameters.AddWithValue("@idUsuario", id)
+            cmd.Parameters.AddWithValue("@idPaciente", id)
 
             'le pasamos la ejecucion con los registros a la variable reader
 
@@ -274,15 +284,14 @@ Public Class UsuarioDAL
                 'le pasamos la conversion a la instancia creada de tipo entity
                 'EJEMPLO  articulo = ConvertToObject(reader)
 
-                usuario = ConvertToObject(reader)
+                Paciente = ConvertToObject(reader)
 
             End If
         End Using
 
         'Retornar los objetos leidos
-        Return usuario
+        Return Paciente
 
     End Function
-
 
 End Class

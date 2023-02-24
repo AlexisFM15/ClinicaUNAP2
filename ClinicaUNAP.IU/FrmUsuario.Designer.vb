@@ -23,55 +23,59 @@ Partial Class FrmUsuario
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
+        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.TxtId = New System.Windows.Forms.TextBox()
-        Me.TxtUsuario = New System.Windows.Forms.TextBox()
+        Me.TxtNombre = New System.Windows.Forms.TextBox()
         Me.TxtEstado = New System.Windows.Forms.TextBox()
         Me.TxtClave = New System.Windows.Forms.TextBox()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.Label4 = New System.Windows.Forms.Label()
-        Me.CbbUsuario = New System.Windows.Forms.ComboBox()
-        Me.Label5 = New System.Windows.Forms.Label()
-        Me.DataGridView1 = New System.Windows.Forms.DataGridView()
-        Me.IdUsuario = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.UserName = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Clave = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Estado = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.IdRol = New System.Windows.Forms.DataGridViewComboBoxColumn()
         Me.BtnRegresar = New System.Windows.Forms.Button()
         Me.BtnNuevo = New System.Windows.Forms.Button()
         Me.BtnGuardar = New System.Windows.Forms.Button()
         Me.ErrorProvider1 = New System.Windows.Forms.ErrorProvider(Me.components)
-        CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.DgvUsuario = New System.Windows.Forms.DataGridView()
+        Me.IdUsuario = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Rol = New System.Windows.Forms.DataGridViewComboBoxColumn()
+        Me.Nombre = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Clave = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Estado = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.CbbRol = New System.Windows.Forms.ComboBox()
+        Me.Label5 = New System.Windows.Forms.Label()
+        Me.BtnRol = New System.Windows.Forms.Button()
+        Me.BtnBuscar = New System.Windows.Forms.Button()
+        Me.Label6 = New System.Windows.Forms.Label()
         CType(Me.ErrorProvider1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.DgvUsuario, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'TxtId
         '
-        Me.TxtId.Location = New System.Drawing.Point(80, 38)
+        Me.TxtId.Location = New System.Drawing.Point(66, 64)
         Me.TxtId.Name = "TxtId"
         Me.TxtId.ReadOnly = True
         Me.TxtId.Size = New System.Drawing.Size(100, 20)
         Me.TxtId.TabIndex = 0
         '
-        'TxtUsuario
+        'TxtNombre
         '
-        Me.TxtUsuario.Location = New System.Drawing.Point(80, 97)
-        Me.TxtUsuario.Name = "TxtUsuario"
-        Me.TxtUsuario.Size = New System.Drawing.Size(100, 20)
-        Me.TxtUsuario.TabIndex = 1
+        Me.TxtNombre.Location = New System.Drawing.Point(66, 170)
+        Me.TxtNombre.Name = "TxtNombre"
+        Me.TxtNombre.Size = New System.Drawing.Size(100, 20)
+        Me.TxtNombre.TabIndex = 1
         '
         'TxtEstado
         '
-        Me.TxtEstado.Location = New System.Drawing.Point(80, 217)
+        Me.TxtEstado.Location = New System.Drawing.Point(66, 290)
         Me.TxtEstado.Name = "TxtEstado"
         Me.TxtEstado.Size = New System.Drawing.Size(100, 20)
         Me.TxtEstado.TabIndex = 2
         '
         'TxtClave
         '
-        Me.TxtClave.Location = New System.Drawing.Point(80, 161)
+        Me.TxtClave.Location = New System.Drawing.Point(66, 234)
         Me.TxtClave.Name = "TxtClave"
         Me.TxtClave.Size = New System.Drawing.Size(100, 20)
         Me.TxtClave.TabIndex = 3
@@ -79,7 +83,7 @@ Partial Class FrmUsuario
         'Label1
         '
         Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(22, 45)
+        Me.Label1.Location = New System.Drawing.Point(8, 71)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(18, 13)
         Me.Label1.TabIndex = 4
@@ -88,7 +92,7 @@ Partial Class FrmUsuario
         'Label2
         '
         Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(22, 104)
+        Me.Label2.Location = New System.Drawing.Point(8, 177)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(43, 13)
         Me.Label2.TabIndex = 5
@@ -97,7 +101,7 @@ Partial Class FrmUsuario
         'Label3
         '
         Me.Label3.AutoSize = True
-        Me.Label3.Location = New System.Drawing.Point(22, 168)
+        Me.Label3.Location = New System.Drawing.Point(8, 241)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(34, 13)
         Me.Label3.TabIndex = 6
@@ -106,40 +110,54 @@ Partial Class FrmUsuario
         'Label4
         '
         Me.Label4.AutoSize = True
-        Me.Label4.Location = New System.Drawing.Point(22, 225)
+        Me.Label4.Location = New System.Drawing.Point(8, 297)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(40, 13)
         Me.Label4.TabIndex = 7
         Me.Label4.Text = "Estado"
         '
-        'CbbUsuario
+        'BtnRegresar
         '
-        Me.CbbUsuario.FormattingEnabled = True
-        Me.CbbUsuario.Location = New System.Drawing.Point(80, 268)
-        Me.CbbUsuario.Name = "CbbUsuario"
-        Me.CbbUsuario.Size = New System.Drawing.Size(121, 21)
-        Me.CbbUsuario.TabIndex = 8
+        Me.BtnRegresar.Location = New System.Drawing.Point(632, 12)
+        Me.BtnRegresar.Name = "BtnRegresar"
+        Me.BtnRegresar.Size = New System.Drawing.Size(138, 61)
+        Me.BtnRegresar.TabIndex = 19
+        Me.BtnRegresar.Text = "Regresar"
+        Me.BtnRegresar.UseVisualStyleBackColor = True
         '
-        'Label5
+        'BtnNuevo
         '
-        Me.Label5.AutoSize = True
-        Me.Label5.Location = New System.Drawing.Point(22, 276)
-        Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(23, 13)
-        Me.Label5.TabIndex = 9
-        Me.Label5.Text = "Rol"
+        Me.BtnNuevo.Location = New System.Drawing.Point(372, 12)
+        Me.BtnNuevo.Name = "BtnNuevo"
+        Me.BtnNuevo.Size = New System.Drawing.Size(123, 61)
+        Me.BtnNuevo.TabIndex = 18
+        Me.BtnNuevo.Text = "Nuevo"
+        Me.BtnNuevo.UseVisualStyleBackColor = True
         '
-        'DataGridView1
+        'BtnGuardar
         '
-        Me.DataGridView1.AllowUserToAddRows = False
-        Me.DataGridView1.AllowUserToDeleteRows = False
-        Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DataGridView1.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.IdUsuario, Me.UserName, Me.Clave, Me.Estado, Me.IdRol})
-        Me.DataGridView1.Location = New System.Drawing.Point(294, 38)
-        Me.DataGridView1.Name = "DataGridView1"
-        Me.DataGridView1.ReadOnly = True
-        Me.DataGridView1.Size = New System.Drawing.Size(513, 311)
-        Me.DataGridView1.TabIndex = 10
+        Me.BtnGuardar.Location = New System.Drawing.Point(501, 12)
+        Me.BtnGuardar.Name = "BtnGuardar"
+        Me.BtnGuardar.Size = New System.Drawing.Size(125, 61)
+        Me.BtnGuardar.TabIndex = 17
+        Me.BtnGuardar.Text = "Guardar"
+        Me.BtnGuardar.UseVisualStyleBackColor = True
+        '
+        'ErrorProvider1
+        '
+        Me.ErrorProvider1.ContainerControl = Me
+        '
+        'DgvUsuario
+        '
+        Me.DgvUsuario.AllowUserToAddRows = False
+        Me.DgvUsuario.AllowUserToDeleteRows = False
+        Me.DgvUsuario.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.DgvUsuario.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.IdUsuario, Me.Rol, Me.Nombre, Me.Clave, Me.Estado})
+        Me.DgvUsuario.Location = New System.Drawing.Point(227, 104)
+        Me.DgvUsuario.Name = "DgvUsuario"
+        Me.DgvUsuario.ReadOnly = True
+        Me.DgvUsuario.Size = New System.Drawing.Size(543, 206)
+        Me.DgvUsuario.TabIndex = 20
         '
         'IdUsuario
         '
@@ -148,16 +166,25 @@ Partial Class FrmUsuario
         Me.IdUsuario.Name = "IdUsuario"
         Me.IdUsuario.ReadOnly = True
         '
-        'UserName
+        'Rol
         '
-        Me.UserName.DataPropertyName = "UserName"
-        Me.UserName.HeaderText = "Usuario"
-        Me.UserName.Name = "UserName"
-        Me.UserName.ReadOnly = True
+        Me.Rol.DataPropertyName = "IdRol"
+        Me.Rol.HeaderText = "Rol"
+        Me.Rol.Name = "Rol"
+        Me.Rol.ReadOnly = True
+        '
+        'Nombre
+        '
+        Me.Nombre.DataPropertyName = "Nombre"
+        Me.Nombre.HeaderText = "Usuario"
+        Me.Nombre.Name = "Nombre"
+        Me.Nombre.ReadOnly = True
         '
         'Clave
         '
         Me.Clave.DataPropertyName = "Clave"
+        DataGridViewCellStyle4.NullValue = Nothing
+        Me.Clave.DefaultCellStyle = DataGridViewCellStyle4
         Me.Clave.HeaderText = "Clave"
         Me.Clave.Name = "Clave"
         Me.Clave.ReadOnly = True
@@ -169,90 +196,102 @@ Partial Class FrmUsuario
         Me.Estado.Name = "Estado"
         Me.Estado.ReadOnly = True
         '
-        'IdRol
+        'CbbRol
         '
-        Me.IdRol.DataPropertyName = "IdRol"
-        Me.IdRol.HeaderText = "Rol"
-        Me.IdRol.Name = "IdRol"
-        Me.IdRol.ReadOnly = True
+        Me.CbbRol.FormattingEnabled = True
+        Me.CbbRol.Location = New System.Drawing.Point(66, 104)
+        Me.CbbRol.Name = "CbbRol"
+        Me.CbbRol.Size = New System.Drawing.Size(121, 21)
+        Me.CbbRol.TabIndex = 21
         '
-        'BtnRegresar
+        'Label5
         '
-        Me.BtnRegresar.Location = New System.Drawing.Point(214, 315)
-        Me.BtnRegresar.Name = "BtnRegresar"
-        Me.BtnRegresar.Size = New System.Drawing.Size(65, 34)
-        Me.BtnRegresar.TabIndex = 19
-        Me.BtnRegresar.Text = "Regresar"
-        Me.BtnRegresar.UseVisualStyleBackColor = True
+        Me.Label5.AutoSize = True
+        Me.Label5.Location = New System.Drawing.Point(8, 104)
+        Me.Label5.Name = "Label5"
+        Me.Label5.Size = New System.Drawing.Size(23, 13)
+        Me.Label5.TabIndex = 22
+        Me.Label5.Text = "Rol"
         '
-        'BtnNuevo
+        'BtnRol
         '
-        Me.BtnNuevo.Location = New System.Drawing.Point(80, 315)
-        Me.BtnNuevo.Name = "BtnNuevo"
-        Me.BtnNuevo.Size = New System.Drawing.Size(59, 34)
-        Me.BtnNuevo.TabIndex = 18
-        Me.BtnNuevo.Text = "Nuevo"
-        Me.BtnNuevo.UseVisualStyleBackColor = True
+        Me.BtnRol.Location = New System.Drawing.Point(193, 104)
+        Me.BtnRol.Name = "BtnRol"
+        Me.BtnRol.Size = New System.Drawing.Size(28, 21)
+        Me.BtnRol.TabIndex = 23
+        Me.BtnRol.Text = "..."
+        Me.BtnRol.UseVisualStyleBackColor = True
         '
-        'BtnGuardar
+        'BtnBuscar
         '
-        Me.BtnGuardar.Location = New System.Drawing.Point(145, 315)
-        Me.BtnGuardar.Name = "BtnGuardar"
-        Me.BtnGuardar.Size = New System.Drawing.Size(63, 34)
-        Me.BtnGuardar.TabIndex = 17
-        Me.BtnGuardar.Text = "Guardar"
-        Me.BtnGuardar.UseVisualStyleBackColor = True
+        Me.BtnBuscar.Location = New System.Drawing.Point(253, 12)
+        Me.BtnBuscar.Name = "BtnBuscar"
+        Me.BtnBuscar.Size = New System.Drawing.Size(113, 61)
+        Me.BtnBuscar.TabIndex = 24
+        Me.BtnBuscar.Text = "Buscar"
+        Me.BtnBuscar.UseVisualStyleBackColor = True
         '
-        'ErrorProvider1
+        'Label6
         '
-        Me.ErrorProvider1.ContainerControl = Me
+        Me.Label6.AutoSize = True
+        Me.Label6.Location = New System.Drawing.Point(224, 88)
+        Me.Label6.Name = "Label6"
+        Me.Label6.Size = New System.Drawing.Size(76, 13)
+        Me.Label6.TabIndex = 40
+        Me.Label6.Text = "Vista Reciente"
         '
         'FrmUsuario
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(819, 361)
+        Me.ClientSize = New System.Drawing.Size(775, 317)
+        Me.Controls.Add(Me.Label6)
+        Me.Controls.Add(Me.BtnBuscar)
+        Me.Controls.Add(Me.BtnRol)
+        Me.Controls.Add(Me.Label5)
+        Me.Controls.Add(Me.CbbRol)
+        Me.Controls.Add(Me.DgvUsuario)
         Me.Controls.Add(Me.BtnRegresar)
         Me.Controls.Add(Me.BtnNuevo)
         Me.Controls.Add(Me.BtnGuardar)
-        Me.Controls.Add(Me.DataGridView1)
-        Me.Controls.Add(Me.Label5)
-        Me.Controls.Add(Me.CbbUsuario)
         Me.Controls.Add(Me.Label4)
         Me.Controls.Add(Me.Label3)
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.TxtClave)
         Me.Controls.Add(Me.TxtEstado)
-        Me.Controls.Add(Me.TxtUsuario)
+        Me.Controls.Add(Me.TxtNombre)
         Me.Controls.Add(Me.TxtId)
         Me.Name = "FrmUsuario"
         Me.Text = "FrmUsuario"
-        CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.ErrorProvider1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.DgvUsuario, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
     End Sub
 
     Friend WithEvents TxtId As Windows.Forms.TextBox
-    Friend WithEvents TxtUsuario As Windows.Forms.TextBox
+    Friend WithEvents TxtNombre As Windows.Forms.TextBox
     Friend WithEvents TxtEstado As Windows.Forms.TextBox
     Friend WithEvents TxtClave As Windows.Forms.TextBox
     Friend WithEvents Label1 As Windows.Forms.Label
     Friend WithEvents Label2 As Windows.Forms.Label
     Friend WithEvents Label3 As Windows.Forms.Label
     Friend WithEvents Label4 As Windows.Forms.Label
-    Friend WithEvents CbbUsuario As Windows.Forms.ComboBox
-    Friend WithEvents Label5 As Windows.Forms.Label
-    Friend WithEvents DataGridView1 As Windows.Forms.DataGridView
     Friend WithEvents BtnRegresar As Windows.Forms.Button
     Friend WithEvents BtnNuevo As Windows.Forms.Button
     Friend WithEvents BtnGuardar As Windows.Forms.Button
     Friend WithEvents ErrorProvider1 As Windows.Forms.ErrorProvider
+    Friend WithEvents DgvUsuario As Windows.Forms.DataGridView
+    Friend WithEvents CbbRol As Windows.Forms.ComboBox
+    Friend WithEvents Label5 As Windows.Forms.Label
+    Friend WithEvents BtnRol As Windows.Forms.Button
     Friend WithEvents IdUsuario As Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents UserName As Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents Rol As Windows.Forms.DataGridViewComboBoxColumn
+    Friend WithEvents Nombre As Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents Clave As Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents Estado As Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents IdRol As Windows.Forms.DataGridViewComboBoxColumn
+    Friend WithEvents BtnBuscar As Windows.Forms.Button
+    Friend WithEvents Label6 As Windows.Forms.Label
 End Class
