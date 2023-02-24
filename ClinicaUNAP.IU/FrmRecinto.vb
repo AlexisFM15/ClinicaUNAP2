@@ -3,7 +3,7 @@ Imports ClinicaUNAP.BLL
 Imports ClinicaUNAP.Entity
 
 Public Class FrmRecinto
-    Public Property RecintoBLL As Object
+
 
     ' PRIMER PASO - INICIALIZAR CONTROLES
     Private Sub InicializarControles()

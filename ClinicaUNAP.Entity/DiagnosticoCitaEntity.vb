@@ -1,4 +1,4 @@
-﻿Public Class DiagnosticoCita
+﻿Public Class DiagnosticoCitaEntity
 
     Public Property IdDiagnosticoCita As Integer
     Public Property Resultado As String

@@ -1,27 +1,27 @@
 ﻿Imports ClinicaUNAP.DAL
 Imports ClinicaUNAP.Entity
 
-Public Class SeguroBLL
+Public Class DiagnosticoCitaBLL
     'ESTA CAPA SE REALIZARA EN DOS PASOS (1- METODO GUARDAR (crear o actualizar) Y 2- EL RETORNO DE LOS METODS OMOLOGOS DE LECTURA)
     'PUDE SER TRE PASOS PORQUE FALTARIA UTILIZAR EL METODO DELETE PARA ELIMINAR EN ESTA CAPA
 
     '1- METODO GUARDAR (crear o actualizar)
 
-    Public Shared Sub Save(Seguro As SeguroEntity) 'Se crea una variable la contendra los objetos entities del cual deseemos tener
+    Public Shared Sub Save(DiagnosticoCita As DiagnosticoCitaEntity) 'Se crea una variable la contendra los objetos entities del cual deseemos tener
 
         'Decimo si el objecto id es igual a 0 entonces es un nuevo registro por tanto de la capa DAL llamamos nuestro metodo crear con parametro de la variable que tendra los objetos entities
         'de lo contrario es una actualizacion, se llama el metodo actualizar.
 
-        If Seguro.IdSeguro = 0 Then
+        If DiagnosticoCita.IdDiagnosticoCita = 0 Then
 
             'es una nueva
 
-            SeguroDAL.Create(Seguro)
+            DiagnosticoCitaDAL.Create(DiagnosticoCita)
         Else
 
             'es una actualizacion
 
-            SeguroDAL.Update(Seguro)
+            DiagnosticoCitaDAL.Update(DiagnosticoCita)
         End If
 
     End Sub
@@ -39,21 +39,25 @@ Public Class SeguroBLL
 
     '3- EL RETORNO DE LOS METODS OMOLOGOS DE LECTURA
 
-    Public Shared Function GetById(id As Integer) As SeguroEntity
+    Public Shared Function GetById(id As Integer) As DiagnosticoCitaEntity
 
-        Return SeguroDAL.GetByID(id)
-
-    End Function
-
-    Public Shared Function GetAll() As List(Of SeguroEntity)
-
-        Return SeguroDAL.GetAll()
+        Return DiagnosticoCitaDAL.GetByID(id)
 
     End Function
 
-    Public Shared Function GetByValor(valor As String) As List(Of SeguroEntity)
 
-        Return SeguroDAL.GetByValor(valor)
+
+
+    Public Shared Function GetAll() As List(Of DiagnosticoCitaEntity)
+
+        Return DiagnosticoCitaDAL.GetAll()
 
     End Function
+
+    Public Shared Function GetByValor(valor As String) As List(Of DiagnosticoCitaEntity)
+
+        Return DiagnosticoCitaDAL.GetByValor(valor)
+
+    End Function
+
 End Class

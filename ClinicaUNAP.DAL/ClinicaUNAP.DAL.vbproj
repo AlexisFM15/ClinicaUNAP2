@@ -65,7 +65,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BaseDAL.vb" />
+    <Compile Include="CitaDAL.vb" />
+    <Compile Include="ConsultaDAL.vb" />
+    <Compile Include="DiagnosticoCitaDAL.vb" />
+    <Compile Include="DiagnosticoConsultaDAL.vb" />
     <Compile Include="EmpleadoDAL.vb" />
+    <Compile Include="EspecialidadDAL.vb" />
+    <Compile Include="MedicamentosDAL.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
       <AutoGen>True</AutoGen>
@@ -81,8 +87,10 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Compile Include="PacienteDAL.vb" />
     <Compile Include="RecintoDAL.vb" />
     <Compile Include="RolDAL.vb" />
+    <Compile Include="SeguroDAL.vb" />
     <Compile Include="UsuarioDAL.vb" />
   </ItemGroup>
   <ItemGroup>

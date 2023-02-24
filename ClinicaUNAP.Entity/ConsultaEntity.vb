@@ -2,7 +2,7 @@
 
     Public Property IdConsulta As Integer
     Public Property TipoAtencion As String
-    Public Property Analisis As String
+    Public Property Descripcion As String
     Public Property IdPaciente As Integer
     Public Property IdMedico As Integer
     Public Property IdEmpleado As Integer

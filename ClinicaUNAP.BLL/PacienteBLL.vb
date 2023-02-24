@@ -56,5 +56,4 @@ Public Class PacienteBLL
         Return PacienteDAL.GetByValor(valor)
 
     End Function
-
 End Class
