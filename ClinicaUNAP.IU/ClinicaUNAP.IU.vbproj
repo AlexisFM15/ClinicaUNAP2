@@ -163,6 +163,10 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\ClinicaUNAP.BLL\ClinicaUNAP.BLL.vbproj">
+      <Project>{946d36db-f6b9-4653-9157-f13113e3d1fe}</Project>
+      <Name>ClinicaUNAP.BLL</Name>
+    </ProjectReference>
     <ProjectReference Include="..\ClinicaUNAP.Entity\ClinicaUNAP.Entity.vbproj">
       <Project>{19e9509d-568e-48f5-94b2-7ac07ed5c77d}</Project>
       <Name>ClinicaUNAP.Entity</Name>

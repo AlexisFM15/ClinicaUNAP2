@@ -4,6 +4,9 @@ Imports System.Drawing
 Imports System.Windows.Forms
 
 Public Class FrmEmpleado
+    Public Property EmpleadoBLL As Object
+    Public Property RecintoBLL As Object
+    Public Property UsuarioBLL As Object
 
     ' PRIMER PASO - INICIALIZAR CONTROLES
     Private Sub InicializarControles()
